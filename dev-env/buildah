@@ -1,0 +1,4 @@
+#!/bin/bash
+
+flatpak-spawn --host buildah $@
+
