@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+mbsync -Vac ~/.config/isync/isyncrc
+
+notify() {
+	new=$(find "$1/INBOX/new/" -type f 2>/dev/null | wc -l)
+	if [[ $new -ne 0 ]]; then
+		account_name=${1#"./"}
+		DISPLAY=:0 notify-send -a "neomutt" "New Mail!" "📬 \`$account_name\` account has $new new mail(s)."
+	fi
+}
+cd ~/.local/share/mail || exit
+
+export -f notify
+find . -mindepth 1 -maxdepth 1 -type d -not -path "./.notmuch" -exec sh -c 'notify "$1"' shell {} \;
+
+notmuch new
