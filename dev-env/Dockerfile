@@ -1,22 +1,22 @@
 FROM registry.fedoraproject.org/fedora-toolbox:37
 
-# Neovim deps: ripgrep, fd-find, neovim, python3-neovim, make,gcc, gcc-c++, wl-clipboard
-# Kitty for kitty terminfo
-
 RUN dnf install -y \
   bat-0.21.0 \
   fd-find-8.2.1 \
+  flexiblas-devel-3.3.0 \
   foot-terminfo-1.13.1 \
-  fzf-0.35.1 \
+  fzf-0.38.0 \
   gcc-12.2.1 \
   gcc-c++-12.2.1 \
   gh-2.23.0 \
   jq-1.6 \
+  libxcrypt-compat-4.4.33 \
   make-4.3 \
   neovim-0.8.3 \
-  nodejs-18.12.1-1.fc37.x86_64 \
-  python3-3.11.0 \
+  nodejs-18.14.2 \
+  python3-3.11.2 \
   ripgrep-13.0.0 \
+  swig-4.0.2 \
   wl-clipboard-2.0.0 \
   zsh-5.9 \
   && dnf clean all
@@ -32,9 +32,7 @@ ENV PATH=$PATH:/usr/local/go/bin
 RUN wget -qO /usr/local/bin/bazel \
   https://github.com/bazelbuild/bazelisk/releases/download/v1.16.0/bazelisk-linux-amd64 \
   && chmod +x /usr/local/bin/bazel
-
 COPY gopackagesdriver.sh /usr/local/bin/gopackagesdriver.sh
-
 ENV GOPACKAGESDRIVER=/usr/local/bin/gopackagesdriver.sh
 
 COPY podman /usr/local/bin/podman
@@ -51,7 +49,6 @@ RUN wget -qO /tmp/rust-init.sh https://sh.rustup.rs \
 ENV PATH=$PATH:/usr/local/cargo/bin
 
 ENV ZSH=/usr/share/oh-my-zsh
-
 RUN git clone --single-branch --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ${ZSH} \
   && \
   git clone --single-branch --depth 1 https://github.com/romkatv/powerlevel10k.git ${ZSH}/custom/themes/powerlevel10k \ 
