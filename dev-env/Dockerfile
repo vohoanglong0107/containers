@@ -47,6 +47,11 @@ RUN wget -qO /tmp/kubectl https://dl.k8s.io/release/v1.24.12/bin/linux/amd64/kub
   install -o root -g root -m 0755 /tmp/kubectl /usr/local/bin/kubectl && \
   rm /tmp/kubectl /tmp/kubectl.sha256
 
+RUN wget -q https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.20.2/kubeseal-0.20.2-linux-amd64.tar.gz && \
+  tar -xvzf kubeseal-0.20.2-linux-amd64.tar.gz kubeseal && \
+  install -m 755 kubeseal /usr/local/bin/kubeseal && \
+  rm kubeseal kubeseal-0.20.2-linux-amd64.tar.gz
+
 COPY etc /etc
 RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo && \
   dnf install -y \
