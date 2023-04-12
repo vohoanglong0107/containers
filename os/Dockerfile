@@ -35,11 +35,12 @@ RUN rpm-ostree install \
   isync-1.4.4 \
   light-1.2.2 \
   mako-1.7.1 \
-  neomutt-5:20220429 \
+  neomutt-6:20230407 \
   notmuch-0.37 \
   msmtp-1.8.23 \
   pavucontrol-5.0 \
   sway-1.7 \
+  urlscan-0.9.10 \
   waybar-0.9.17 \
   wl-clipboard-2.0.0 \
   wtype-0.4 \
