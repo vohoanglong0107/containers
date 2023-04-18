@@ -75,7 +75,7 @@ RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hash
   jq-1.6 \
   libxcrypt-compat-4.4.33 \
   make-4.3 \
-  neovim-0.8.3 \
+  neovim-0.9.0 \
   nodejs-18.15.0 \
   python3-3.11.2 \
   ripgrep-13.0.0 \
