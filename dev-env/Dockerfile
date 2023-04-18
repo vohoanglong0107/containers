@@ -66,7 +66,7 @@ RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hash
   git-delta-0.13.0 \
   fd-find-8.2.1 \
   foot-terminfo-1.13.1 \
-  fzf-0.38.0 \
+  fzf-0.39.0 \
   gcc-12.2.1 \
   gcc-c++-12.2.1 \
   gh-2.23.0 \
