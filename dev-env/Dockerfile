@@ -47,6 +47,12 @@ RUN wget -qO /tmp/kubectl https://dl.k8s.io/release/v1.24.12/bin/linux/amd64/kub
   install -o root -g root -m 0755 /tmp/kubectl /usr/local/bin/kubectl && \
   rm /tmp/kubectl /tmp/kubectl.sha256
 
+RUN wget -qO go-containerregistry_Linux_x86_64.tar.gz https://github.com/google/go-containerregistry/releases/download/v0.14.0/go-containerregistry_Linux_x86_64.tar.gz && \
+  wget -qO checksums.txt https://github.com/google/go-containerregistry/releases/download/v0.14.0/checksums.txt && \
+  sha256sum --check --ignore-missing < checksums.txt && \
+  tar -C /usr/local/bin -xzf go-containerregistry_Linux_x86_64.tar.gz crane gcrane && \
+  rm go-containerregistry_Linux_x86_64.tar.gz checksums.txt
+
 RUN wget -q https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.20.2/kubeseal-0.20.2-linux-amd64.tar.gz && \
   tar -xvzf kubeseal-0.20.2-linux-amd64.tar.gz kubeseal && \
   install -m 755 kubeseal /usr/local/bin/kubeseal && \
