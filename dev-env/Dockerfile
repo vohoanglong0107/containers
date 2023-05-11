@@ -1,3 +1,17 @@
+FROM registry.fedoraproject.org/fedora-toolbox:37 as builder
+
+RUN dnf install -y gcc-12.2.1 gcc-c++-12.2.1 && dnf clean all
+RUN wget -qO /usr/local/bin/bazel \
+  https://github.com/bazelbuild/bazelisk/releases/download/v1.16.0/bazelisk-linux-amd64 \
+  && chmod +x /usr/local/bin/bazel
+
+WORKDIR /app
+RUN wget -qO source.tar.gz https://github.com/bazelbuild/bazel-watcher/archive/refs/tags/v0.23.1.tar.gz \
+  && tar -xzf source.tar.gz
+WORKDIR /app/bazel-watcher-0.23.1
+RUN /usr/local/bin/bazel build //cmd/ibazel:ibazel --config release --platforms=@io_bazel_rules_go//go/toolchain:linux_amd64 \
+  && cp "$(/usr/local/bin/bazel info bazel-bin)/cmd/ibazel/ibazel_/ibazel" ibazel
+
 FROM registry.fedoraproject.org/fedora-toolbox:37
 
 RUN wget -q https://go.dev/dl/go1.20.linux-amd64.tar.gz \
@@ -95,3 +109,8 @@ RUN python3 -m venv /usr/local/venv && \
   /usr/local/venv/bin/pip install pynvim==0.4.3 
 
 RUN npm install -g tldr@3.3.8
+
+# COPY --from=builder /app/bazel-watcher-0.23.1/ibazel /usr/local/bin/ibazel
+RUN wget -q https://github.com/bazelbuild/bazel-watcher/releases/download/v0.22.0/ibazel_linux_amd64 \
+  && mv ibazel_linux_amd64 /usr/local/bin/ibazel \
+  &&  chmod +x /usr/local/bin/ibazel
