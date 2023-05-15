@@ -1,6 +1,6 @@
-# https://www.ypsidanger.com/building-your-own-fedora-silverblue-image/
-FROM ghcr.io/cgwalters/fedora-silverblue:37
-# See https://pagure.io/releng/issue/11047 for final location
+# https://github.com/fedora-silverblue/issue-tracker/issues/359
+# https://github.com/fedora-silverblue/issue-tracker/issues/334#issuecomment-1315737913
+FROM quay.io/fedora-ostree-desktops/silverblue:38
 
 COPY etc/yum.repos.d /etc/yum.repos.d
 
@@ -15,23 +15,26 @@ RUN rpm-ostree install \
   "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" \
   "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm" \
   && \
+  # https://discussion.fedoraproject.org/t/unable-to-install-ffmpeg-libs-on-fedora-38-silverblue-beta/79632/7
+  rpm-ostree override remove libavcodec-free libavfilter-free libavformat-free libavutil-free libpostproc-free libswresample-free libswscale-free --install ffmpeg-6.0 \
+  && \
   rpm-ostree install \
   abook-0.6.1 \
   bat-0.21.0 \
   btop-1.2.13 \
-  fcitx5-5.0.21 \
-  fcitx5-anthy-5.0.13 \
-  fcitx5-unikey-5.0.12 \
-  ffmpeg-5.1.2 \
-  fuzzel-1.8.2 \
-  fzf-0.35.1 \
-  gh-2.23.0 \
-  gstreamer1-plugin-libav-1.20.5 \
-  gstreamer1-plugins-bad-free-extras-1.20.5 \
-  gstreamer1-plugins-bad-freeworld-1.20.5 \
-  gstreamer1-plugins-ugly-1.20.5 \
-  gstreamer1-vaapi-1.20.5 \
-  intel-media-driver-22.5.4 \
+  fcitx5-5.0.23 \
+  fcitx5-anthy-5.0.14 \
+  fcitx5-unikey-5.0.13 \
+  ffmpeg-6.0 \
+  fuzzel-1.9.1 \
+  fzf-0.39.0 \
+  gh-2.28.0 \
+  gstreamer1-plugin-libav-1.22.2 \
+  gstreamer1-plugins-bad-free-extras-1.22.2 \
+  gstreamer1-plugins-bad-freeworld-1.22.2 \
+  gstreamer1-plugins-ugly-1.22.2 \
+  gstreamer1-vaapi-1.22.2 \
+  intel-media-driver-23.1.6 \
   isync-1.4.4 \
   light-1.2.2 \
   mako-1.7.1 \
@@ -39,7 +42,7 @@ RUN rpm-ostree install \
   notmuch-0.37 \
   msmtp-1.8.23 \
   pavucontrol-5.0 \
-  sway-1.7 \
+  sway-1.8.1 \
   urlscan-0.9.10 \
   waybar-0.9.17 \
   wl-clipboard-2.0.0 \
