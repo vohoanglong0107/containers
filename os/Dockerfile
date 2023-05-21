@@ -83,4 +83,6 @@ RUN setsebool -P domain_can_mmap_files=true container_manage_cgroup=true && ostr
 COPY etc /etc
 COPY usr /usr
 
-RUN fc-cache -f && ostree container commit
+RUN wget -q https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/FiraMono.zip \
+  && unzip FiraMono.zip -d /usr/share/fonts/fira-mono-nerd-fonts/ \
+  && fc-cache -f && ostree container commit
