@@ -2,8 +2,6 @@
 # https://github.com/fedora-silverblue/issue-tracker/issues/334#issuecomment-1315737913
 FROM quay.io/fedora-ostree-desktops/silverblue:38
 
-COPY etc/yum.repos.d /etc/yum.repos.d
-
 # On system with ostree, dracut is patched so no need to rewrite initramfs with dracut -f or plymouth-set-default-theme -R 
 COPY usr/share/plymouth /usr/share/plymouth
 RUN plymouth-set-default-theme catppuccin-mocha && ostree container commit
@@ -38,7 +36,7 @@ RUN rpm-ostree install \
   isync-1.4.4 \
   light-1.2.2 \
   mako-1.7.1 \
-  neomutt-6:20230407 \
+  neomutt-20230407 \
   notmuch-0.37 \
   msmtp-1.8.23 \
   pavucontrol-5.0 \
