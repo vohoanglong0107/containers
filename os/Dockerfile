@@ -25,7 +25,7 @@ RUN rpm-ostree install \
   fcitx5-unikey-5.0.13 \
   ffmpeg-6.0 \
   fuzzel-1.9.1 \
-  fzf-0.39.0 \
+  fzf-0.40.0 \
   gh-2.28.0 \
   gstreamer1-plugin-libav-1.22.2 \
   gstreamer1-plugins-bad-free-extras-1.22.2 \

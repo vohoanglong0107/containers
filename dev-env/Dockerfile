@@ -70,17 +70,17 @@ RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hash
   dnf install -y \
   bat-0.21.0 \
   git-delta-0.13.0 \
-  fd-find-8.2.1 \
+  fd-find-8.7.0 \
   foot-terminfo-1.13.1 \
-  fzf-0.39.0 \
-  gcc-12.2.1 \
-  gcc-c++-12.2.1 \
-  gh-2.23.0 \
+  fzf-0.40.0 \
+  gcc-13.1.1 \
+  gcc-c++-13.1.1 \
+  gh-2.28.0 \
   google-cloud-sdk-gke-gcloud-auth-plugin \
   helm-3.11.1 \
   jq-1.6 \
   libxcrypt-compat-4.4.33 \
-  make-4.3 \
+  make-4.4 \
   neovim-0.9.0 \
   nodejs-18.15.0 \
   python3-3.11.2 \
