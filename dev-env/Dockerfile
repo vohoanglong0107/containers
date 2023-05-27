@@ -61,11 +61,11 @@ RUN git clone --single-branch --depth 1 https://github.com/ohmyzsh/ohmyzsh.git $
   git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH}/custom/plugins/zsh-autosuggestions && \
   git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH}/custom/plugins/zsh-syntax-highlighting
 
-RUN wget -qO  lazygit_0.37.0_Linux_x86_64.tar.gz  https://github.com/jesseduffield/lazygit/releases/download/v0.37.0/lazygit_0.37.0_Linux_x86_64.tar.gz && \
-  wget -qO /tmp/checksums.txt https://github.com/jesseduffield/lazygit/releases/download/v0.37.0/checksums.txt && \
+RUN wget -qO  lazygit_0.38.2_Linux_x86_64.tar.gz  https://github.com/jesseduffield/lazygit/releases/download/v0.38.2/lazygit_0.38.2_Linux_x86_64.tar.gz && \
+  wget -qO /tmp/checksums.txt https://github.com/jesseduffield/lazygit/releases/download/v0.38.2/checksums.txt && \
   sha256sum --check --ignore-missing < /tmp/checksums.txt && \
-  tar -C /usr/local/bin -xzf lazygit_0.37.0_Linux_x86_64.tar.gz lazygit  && \
-  rm /tmp/checksums.txt lazygit_0.37.0_Linux_x86_64.tar.gz
+  tar -C /usr/local/bin -xzf lazygit_0.38.2_Linux_x86_64.tar.gz lazygit  && \
+  rm /tmp/checksums.txt lazygit_0.38.2_Linux_x86_64.tar.gz
 
 RUN wget -qO /tmp/argocd https://github.com/argoproj/argo-cd/releases/download/v2.6.6/argocd-linux-amd64 &&\
   install -m 555 /tmp/argocd /usr/local/bin/argocd && \
