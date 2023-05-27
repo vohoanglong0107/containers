@@ -1,5 +1,36 @@
 FROM registry.fedoraproject.org/fedora-toolbox:38
 
+COPY etc /etc
+RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo && \
+  dnf install -y \
+  bat-0.21.0 \
+  difftastic-0.45.0 \
+  git-delta-0.13.0 \
+  fd-find-8.7.0 \
+  foot-terminfo-1.13.1 \
+  fzf-0.40.0 \
+  gcc-13.1.1 \
+  gcc-c++-13.1.1 \
+  gh-2.29.0 \
+  google-cloud-sdk-gke-gcloud-auth-plugin \
+  helm-3.11.1 \
+  jq-1.6 \
+  libxcrypt-compat-4.4.33 \
+  make-4.4 \
+  neovim-0.9.0 \
+  nodejs-18.15.0 \
+  python3-3.11.2 \
+  ripgrep-13.0.0 \
+  terraform-1.4.2 \
+  wl-clipboard-2.0.0 \
+  zsh-5.9 \
+  && dnf clean all
+
+RUN python3 -m venv /usr/local/venv && \
+  /usr/local/venv/bin/pip install pynvim==0.4.3 
+
+RUN npm install -g tldr@3.3.8
+
 RUN wget -q https://go.dev/dl/go1.20.linux-amd64.tar.gz \
   && tar -C /usr/local -xzf go1.20.linux-amd64.tar.gz \
   && rm go1.20.linux-amd64.tar.gz
@@ -64,36 +95,6 @@ RUN wget -qO tektoncd-cli-0.30.0_Linux-64bit.rpm https://github.com/tektoncd/cli
   dnf -y install tektoncd-cli-0.30.0_Linux-64bit.rpm && \
   rm /tmp/checksums.txt tektoncd-cli-0.30.0_Linux-64bit.rpm && \
   dnf clean all
-
-COPY etc /etc
-RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo && \
-  dnf install -y \
-  bat-0.21.0 \
-  git-delta-0.13.0 \
-  fd-find-8.7.0 \
-  foot-terminfo-1.13.1 \
-  fzf-0.40.0 \
-  gcc-13.1.1 \
-  gcc-c++-13.1.1 \
-  gh-2.28.0 \
-  google-cloud-sdk-gke-gcloud-auth-plugin \
-  helm-3.11.1 \
-  jq-1.6 \
-  libxcrypt-compat-4.4.33 \
-  make-4.4 \
-  neovim-0.9.0 \
-  nodejs-18.15.0 \
-  python3-3.11.2 \
-  ripgrep-13.0.0 \
-  terraform-1.4.2 \
-  wl-clipboard-2.0.0 \
-  zsh-5.9 \
-  && dnf clean all
-
-RUN python3 -m venv /usr/local/venv && \
-  /usr/local/venv/bin/pip install pynvim==0.4.3 
-
-RUN npm install -g tldr@3.3.8
 
 RUN wget -q https://github.com/bazelbuild/bazel-watcher/releases/download/v0.22.0/ibazel_linux_amd64 \
   && mv ibazel_linux_amd64 /usr/local/bin/ibazel \
