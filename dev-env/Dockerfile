@@ -6,6 +6,7 @@ RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hash
   bat-0.21.0 \
   difftastic-0.45.0 \
   git-delta-0.13.0 \
+  imv-4.4.0 \
   fd-find-8.7.0 \
   foot-terminfo-1.13.1 \
   fzf-0.40.0 \
@@ -17,6 +18,7 @@ RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hash
   jq-1.6 \
   libxcrypt-compat-4.4.33 \
   make-4.4 \
+  mesa-dri-drivers-23.0.3 \
   neovim-0.9.0 \
   nodejs-18.15.0 \
   python3-3.11.2 \
