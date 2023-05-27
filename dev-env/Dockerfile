@@ -55,12 +55,6 @@ RUN wget -qO /tmp/rust-init.sh https://sh.rustup.rs \
   && rm /tmp/rust-init.sh
 ENV PATH=$PATH:/usr/local/cargo/bin
 
-ENV ZSH=/usr/share/oh-my-zsh
-RUN git clone --single-branch --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ${ZSH} && \
-  git clone --single-branch --depth 1 https://github.com/romkatv/powerlevel10k.git ${ZSH}/custom/themes/powerlevel10k && \
-  git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH}/custom/plugins/zsh-autosuggestions && \
-  git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH}/custom/plugins/zsh-syntax-highlighting
-
 RUN wget -qO  lazygit_0.38.2_Linux_x86_64.tar.gz  https://github.com/jesseduffield/lazygit/releases/download/v0.38.2/lazygit_0.38.2_Linux_x86_64.tar.gz && \
   wget -qO /tmp/checksums.txt https://github.com/jesseduffield/lazygit/releases/download/v0.38.2/checksums.txt && \
   sha256sum --check --ignore-missing < /tmp/checksums.txt && \
@@ -99,3 +93,10 @@ RUN wget -qO tektoncd-cli-0.30.0_Linux-64bit.rpm https://github.com/tektoncd/cli
 RUN wget -q https://github.com/bazelbuild/bazel-watcher/releases/download/v0.22.0/ibazel_linux_amd64 \
   && mv ibazel_linux_amd64 /usr/local/bin/ibazel \
   &&  chmod +x /usr/local/bin/ibazel
+
+ENV ZSH=/usr/share/oh-my-zsh
+RUN git clone --single-branch --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ${ZSH} && \
+  git clone --single-branch --depth 1 https://github.com/romkatv/powerlevel10k.git ${ZSH}/custom/themes/powerlevel10k && \
+  git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH}/custom/plugins/zsh-autosuggestions && \
+  git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH}/custom/plugins/zsh-syntax-highlighting
+
