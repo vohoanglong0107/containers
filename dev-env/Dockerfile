@@ -131,6 +131,13 @@ RUN wget -q https://github.com/bazelbuild/buildtools/releases/download/v6.1.2/bu
 
 COPY --from=builder /app/copybara/copybara_wrapper /usr/local/bin/copybara
 
+RUN wget -q https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 && \
+  wget -q https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64.sha256 && \
+  sha256sum --check --ignore-missing < hadolint-Linux-x86_64.sha256 && \
+  mv hadolint-Linux-x86_64 /usr/local/bin/hadolint && \
+  chmod +x /usr/local/bin/hadolint && \
+  rm hadolint-Linux-x86_64.sha256
+
 ENV ZSH=/usr/share/oh-my-zsh
 RUN git clone --single-branch --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ${ZSH} && \
   git clone --single-branch --depth 1 https://github.com/romkatv/powerlevel10k.git ${ZSH}/custom/themes/powerlevel10k && \
