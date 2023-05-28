@@ -138,6 +138,11 @@ RUN wget -q https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadol
   chmod +x /usr/local/bin/hadolint && \
   rm hadolint-Linux-x86_64.sha256
 
+RUN wget -q https://github.com/JohnnyMorganz/StyLua/releases/download/v0.17.1/stylua-linux.zip && \
+  unzip stylua-linux.zip -d /usr/local/bin && \
+  chmod +x /usr/local/bin/stylua && \
+  rm stylua-linux.zip
+
 ENV ZSH=/usr/share/oh-my-zsh
 RUN git clone --single-branch --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ${ZSH} && \
   git clone --single-branch --depth 1 https://github.com/romkatv/powerlevel10k.git ${ZSH}/custom/themes/powerlevel10k && \
