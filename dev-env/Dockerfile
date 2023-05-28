@@ -96,6 +96,10 @@ RUN wget -q https://github.com/bazelbuild/bazel-watcher/releases/download/v0.22.
   && mv ibazel_linux_amd64 /usr/local/bin/ibazel \
   &&  chmod +x /usr/local/bin/ibazel
 
+RUN wget -q https://github.com/bazelbuild/buildtools/releases/download/v6.1.2/buildifier-linux-amd64 \
+  && mv buildifier-linux-amd64 /usr/local/bin/buildifier \
+  &&  chmod +x /usr/local/bin/buildifier
+
 ENV ZSH=/usr/share/oh-my-zsh
 RUN git clone --single-branch --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ${ZSH} && \
   git clone --single-branch --depth 1 https://github.com/romkatv/powerlevel10k.git ${ZSH}/custom/themes/powerlevel10k && \
