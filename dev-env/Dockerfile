@@ -46,10 +46,14 @@ RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hash
   mesa-dri-drivers-23.0.3 \
   neovim-0.9.0 \
   nodejs-18.15.0 \
+  pandoc-2.19.2 \
+  pandoc-pdf-2.19.2 \
   python3-3.11.2 \
   ripgrep-13.0.0 \
   terraform-1.4.2 \
   wl-clipboard-2.0.0 \
+  zathura-0.5.2 \
+  zathura-pdf-poppler-0.3.1 \
   zsh-5.9 \
   && dnf clean all
 
