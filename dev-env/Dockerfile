@@ -1,3 +1,27 @@
+FROM registry.fedoraproject.org/fedora-toolbox:38 as builder
+
+RUN dnf install -y \
+  gcc-c++-13.1.1 \
+  java-11-openjdk-headless-11.0.19.0.7 \
+  make-4.4 \
+  && dnf clean all
+
+RUN wget -qO /usr/local/bin/bazel \
+  https://github.com/bazelbuild/bazelisk/releases/download/v1.16.0/bazelisk-linux-amd64 && \
+  chmod +x /usr/local/bin/bazel
+
+WORKDIR /app/copybara
+
+RUN git init && \
+  git remote add origin https://github.com/google/copybara.git && \
+  git fetch --depth 1 origin 241a8132d2705c96e71773f97a8acabe9c092020 && \
+  git checkout FETCH_HEAD && \
+  /usr/local/bin/bazel build //java/com/google/copybara:copybara_deploy.jar --java_runtime_version=remotejdk_11
+
+RUN echo '#!/usr/bin/env -S java -jar' > ./copybara_wrapper && \
+  cat bazel-bin/java/com/google/copybara/copybara_deploy.jar >> ./copybara_wrapper && \
+  chmod +x ./copybara_wrapper
+
 FROM registry.fedoraproject.org/fedora-toolbox:38
 
 COPY etc /etc
@@ -15,6 +39,7 @@ RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hash
   gh-2.29.0 \
   google-cloud-sdk-gke-gcloud-auth-plugin \
   helm-3.11.1 \
+  java-11-openjdk-headless-11.0.19.0.7 \
   jq-1.6 \
   libxcrypt-compat-4.4.33 \
   make-4.4 \
@@ -99,6 +124,8 @@ RUN wget -q https://github.com/bazelbuild/bazel-watcher/releases/download/v0.22.
 RUN wget -q https://github.com/bazelbuild/buildtools/releases/download/v6.1.2/buildifier-linux-amd64 \
   && mv buildifier-linux-amd64 /usr/local/bin/buildifier \
   &&  chmod +x /usr/local/bin/buildifier
+
+COPY --from=builder /app/copybara/copybara_wrapper /usr/local/bin/copybara
 
 ENV ZSH=/usr/share/oh-my-zsh
 RUN git clone --single-branch --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ${ZSH} && \
