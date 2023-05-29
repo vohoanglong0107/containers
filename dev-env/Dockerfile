@@ -144,6 +144,13 @@ RUN wget -q https://github.com/JohnnyMorganz/StyLua/releases/download/v0.17.1/st
   chmod +x /usr/local/bin/stylua && \
   rm stylua-linux.zip
 
+RUN wget -q https://github.com/charliermarsh/ruff/releases/download/v0.0.270/ruff-x86_64-unknown-linux-gnu.tar.gz && \
+  wget -q https://github.com/charliermarsh/ruff/releases/download/v0.0.270/ruff-x86_64-unknown-linux-gnu.tar.gz.sha256 && \
+  sha256sum --check --ignore-missing < ruff-x86_64-unknown-linux-gnu.tar.gz.sha256 && \
+  tar -xzvf ruff-x86_64-unknown-linux-gnu.tar.gz ruff && \
+  install -m 755 ruff /usr/local/bin/ruff && \
+  rm ruff-x86_64-unknown-linux-gnu.tar.gz.sha256 ruff-x86_64-unknown-linux-gnu.tar.gz
+
 ENV ZSH=/usr/share/oh-my-zsh
 RUN git clone --single-branch --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ${ZSH} && \
   git clone --single-branch --depth 1 https://github.com/romkatv/powerlevel10k.git ${ZSH}/custom/themes/powerlevel10k && \
