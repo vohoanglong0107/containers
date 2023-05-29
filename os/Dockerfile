@@ -27,6 +27,7 @@ RUN rpm-ostree install \
   fuzzel-1.9.1 \
   fzf-0.40.0 \
   gh-2.28.0 \
+  google-chrome-stable-113.0.5672.126 \
   gstreamer1-plugin-libav-1.22.2 \
   gstreamer1-plugins-bad-free-extras-1.22.2 \
   gstreamer1-plugins-bad-freeworld-1.22.2 \
