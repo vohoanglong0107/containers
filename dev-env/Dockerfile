@@ -51,6 +51,7 @@ RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hash
   python3-3.11.2 \
   ripgrep-13.0.0 \
   terraform-1.4.2 \
+  wkhtmltopdf-0.12.6 \
   wl-clipboard-2.0.0 \
   zathura-0.5.2 \
   zathura-pdf-poppler-0.3.1 \
