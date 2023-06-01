@@ -74,9 +74,8 @@ RUN wget -qO /usr/local/bin/bazel \
 COPY gopackagesdriver.sh /usr/local/bin/gopackagesdriver.sh
 ENV GOPACKAGESDRIVER=/usr/local/bin/gopackagesdriver.sh
 
-COPY podman /usr/local/bin/podman
+COPY usr /usr
 RUN ln -s /usr/local/bin/podman /usr/local/bin/docker
-COPY buildah /usr/local/bin/buildah
 
 # https://github.com/rust-lang/rustup/issues/618#issuecomment-570951132
 ENV CARGO_HOME=/usr/local/cargo
