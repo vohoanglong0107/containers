@@ -46,6 +46,7 @@ RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hash
   nodejs-18.15.0 \
   pandoc-2.19.2 \
   pandoc-pdf-2.19.2 \
+  patch-2.7.6 \
   python3-3.11.2 \
   ripgrep-13.0.0 \
   terraform-1.4.2 \
