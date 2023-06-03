@@ -27,12 +27,12 @@ RUN rpm-ostree install \
   fuzzel-1.9.1 \
   fzf-0.40.0 \
   gh-2.28.0 \
-  google-chrome-stable-113.0.5672.126 \
-  gstreamer1-plugin-libav-1.22.2 \
-  gstreamer1-plugins-bad-free-extras-1.22.2 \
-  gstreamer1-plugins-bad-freeworld-1.22.2 \
-  gstreamer1-plugins-ugly-1.22.2 \
-  gstreamer1-vaapi-1.22.2 \
+  gstreamer1-plugin-libav-1.22.3 \
+  gstreamer1-plugins-bad-free-extras-1.22.3 \
+  gstreamer1-plugins-bad-freeworld-1.22.3 \
+  gstreamer1-plugins-ugly-1.22.3 \
+  gstreamer1-vaapi-1.22.3 \
+  imv-4.4.0 \
   intel-media-driver-23.1.6 \
   isync-1.4.4 \
   light-1.2.2 \
