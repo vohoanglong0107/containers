@@ -6,4 +6,4 @@ find ${SCRIPT_DIR} \
   -maxdepth 1 \
   -type f \
   ! -name 'installers.sh' \
-  -print0 | xargs -n 1 -0 bash -c 
+  -print0 | xargs -P 0 -n 1 -0 bash -c 
