@@ -24,14 +24,11 @@ RUN echo '#!/usr/bin/env -S java -jar' > ./copybara_wrapper && \
 
 FROM registry.fedoraproject.org/fedora-toolbox:38-15
 
-ENV PATH=$PATH:/usr/local/go/bin:/usr/local/cargo/bin
 ENV GOPACKAGESDRIVER=/usr/local/bin/gopackagesdriver.sh
-# https://github.com/rust-lang/rustup/issues/618#issuecomment-570951132
-ENV CARGO_HOME=/usr/local/cargo
-ENV RUSTUP_HOME=/usr/local/rust
 ENV ZSH=/usr/share/oh-my-zsh
 
 COPY --from=builder /app/copybara/copybara_wrapper /usr/local/bin/copybara
+COPY gopackagesdriver.sh /usr/local/bin/gopackagesdriver.sh
 
 COPY etc /etc
 
@@ -39,8 +36,12 @@ WORKDIR /usr/local
 COPY packages/system/ ./packages/system/
 RUN ./packages/system/packages.sh && rm -r ./packages/system
 
-COPY installers/  ./installers/
-RUN ./installers/installers.sh && rm -rf ./installers
+WORKDIR /usr/local/packages/go
+ENV GOPATH=/usr/local/packages/go/gopath
+ENV GOBIN=${GOPATH}/bin
+ENV PATH=${GOBIN}:$PATH
+COPY packages/go/go.sh ./
+RUN ./go.sh && rm go.sh
 
 COPY packages/python/requirements.txt .
 RUN python3 -m venv /usr/local/packages/python/venv && \
@@ -53,7 +54,8 @@ COPY packages/nodejs/ ./
 RUN npm ci
 ENV PATH=/usr/local/packages/nodejs/node_modules/.bin:$PATH
 
-COPY gopackagesdriver.sh /usr/local/bin/gopackagesdriver.sh
+COPY installers/  ./installers/
+RUN ./installers/installers.sh && rm -rf ./installers
 
 COPY usr /usr
 RUN ln -s /usr/local/bin/podman /usr/local/bin/docker

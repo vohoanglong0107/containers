@@ -1,4 +1,5 @@
 bat
+cargo
 difftastic
 fd-find
 foot-terminfo
@@ -7,6 +8,7 @@ gcc
 gcc-c++
 gh
 git-delta
+golang
 google-cloud-sdk-gke-gcloud-auth-plugin
 helix
 zellij
@@ -21,6 +23,7 @@ pandoc
 pandoc-pdf
 patch
 ripgrep
+rust
 terraform
 wkhtmltopdf
 wl-clipboard
