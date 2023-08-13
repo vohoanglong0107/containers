@@ -9,4 +9,4 @@ wget -q $URL/ruff-x86_64-unknown-linux-gnu.tar.gz.sha256
 sha256sum --check --ignore-missing <ruff-x86_64-unknown-linux-gnu.tar.gz.sha256
 tar -xzvf ruff-x86_64-unknown-linux-gnu.tar.gz ruff
 install -m 755 ruff /usr/local/bin/ruff
-rm ruff-x86_64-unknown-linux-gnu.tar.gz.sha256 ruff-x86_64-unknown-linux-gnu.tar.gz
+rm ruff ruff-x86_64-unknown-linux-gnu.tar.gz.sha256 ruff-x86_64-unknown-linux-gnu.tar.gz
