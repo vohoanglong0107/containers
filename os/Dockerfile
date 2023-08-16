@@ -27,11 +27,10 @@ RUN rpm-ostree install \
   fuzzel-1.9.1 \
   fzf-0.40.0 \
   gh-2.28.0 \
-  gstreamer1-plugin-libav-1.22.3 \
-  gstreamer1-plugins-bad-free-extras-1.22.3 \
+  gstreamer1-plugins-bad-free-extras-1.22.5 \
   gstreamer1-plugins-bad-freeworld-1.22.3 \
   gstreamer1-plugins-ugly-1.22.3 \
-  gstreamer1-vaapi-1.22.3 \
+  gstreamer1-vaapi-1.22.5 \
   imv-4.4.0 \
   intel-media-driver-23.1.6 \
   isync-1.4.4 \
@@ -42,6 +41,7 @@ RUN rpm-ostree install \
   msmtp-1.8.23 \
   pavucontrol-5.0 \
   podman-compose-1.0.6 \
+  pulseaudio-utils-16.1 \
   sway-1.8.1 \
   urlscan-0.9.10 \
   waybar-0.9.17 \
