@@ -74,14 +74,3 @@ COPY usr /usr
 RUN wget -q https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/FiraMono.zip \
   && unzip FiraMono.zip -d /usr/share/fonts/fira-mono-nerd-fonts/ \
   && fc-cache -f && ostree container commit
-
-ENV ZSH=/usr/share/oh-my-zsh
-RUN git clone --single-branch --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ${ZSH} \
-  && \
-  git clone --single-branch --depth 1 https://github.com/romkatv/powerlevel10k.git ${ZSH}/custom/themes/powerlevel10k \ 
-  && \
-  git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH}/custom/plugins/zsh-autosuggestions \ 
-  && \
-  git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH}/custom/plugins/zsh-syntax-highlighting \
-  && \
-  ostree container commit
