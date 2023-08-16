@@ -41,6 +41,7 @@ RUN rpm-ostree install \
   notmuch-0.37 \
   msmtp-1.8.23 \
   pavucontrol-5.0 \
+  podman-compose-1.0.6 \
   sway-1.8.1 \
   urlscan-0.9.10 \
   waybar-0.9.17 \
