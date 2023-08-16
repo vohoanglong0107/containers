@@ -36,6 +36,10 @@ RUN wget -qO  lazygit_0.37.0_Linux_x86_64.tar.gz  https://github.com/jesseduffie
   tar -C /usr/local/bin -xzf lazygit_0.37.0_Linux_x86_64.tar.gz lazygit  && \
   rm /tmp/checksums.txt lazygit_0.37.0_Linux_x86_64.tar.gz
 
+RUN wget -qO /tmp/argocd https://github.com/argoproj/argo-cd/releases/download/v2.6.6/argocd-linux-amd64 &&\
+  install -m 555 /tmp/argocd /usr/local/bin/argocd && \
+  rm /tmp/argocd
+
 COPY etc /etc
 RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo && \
   dnf install -y \
