@@ -19,6 +19,7 @@ jq
 libxcrypt-compat
 make
 neovim
+nmap-ncat
 nodejs
 pandoc
 pandoc-pdf
