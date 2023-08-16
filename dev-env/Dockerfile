@@ -86,4 +86,4 @@ RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hash
   && dnf clean all
 
 RUN python3 -m venv /usr/local/venv && \
-  /usr/local/venv/bin/pip install pynvim
+  /usr/local/venv/bin/pip install pynvim==0.4.3 
