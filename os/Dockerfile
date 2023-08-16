@@ -22,7 +22,7 @@ RUN rpm-ostree install \
   fcitx5-5.0.21 \
   fcitx5-anthy-5.0.13 \
   fcitx5-unikey-5.0.12 \
-  ffmpeg-5.1.2 \ 
+  ffmpeg-5.1.2 \
   fuzzel-1.8.2 \
   fzf-0.35.1 \
   gh-2.23.0 \
