@@ -24,8 +24,6 @@ RUN echo '#!/usr/bin/env -S java -jar' > ./copybara_wrapper && \
 
 FROM registry.fedoraproject.org/fedora-toolbox:38-15
 
-WORKDIR /tmp
-
 ENV PATH=$PATH:/usr/local/go/bin:/usr/local/cargo/bin
 ENV GOPACKAGESDRIVER=/usr/local/bin/gopackagesdriver.sh
 # https://github.com/rust-lang/rustup/issues/618#issuecomment-570951132
@@ -37,19 +35,25 @@ COPY --from=builder /app/copybara/copybara_wrapper /usr/local/bin/copybara
 
 COPY etc /etc
 
-COPY packages.sh packages.txt ./
-RUN ./packages.sh && rm ./packages.sh
+WORKDIR /usr/local
+COPY packages/system/ ./packages/system/
+RUN ./packages/system/packages.sh && rm -r ./packages/system
 
-COPY installers.sh .
 COPY installers/  ./installers/
-RUN ./installers.sh && rm -rf ./installers ./installers.sh
+RUN ./installers/installers.sh && rm -rf ./installers
+
+COPY packages/python/requirements.txt .
+RUN python3 -m venv /usr/local/packages/python/venv && \
+  /usr/local/packages/python/venv/bin/pip install -r requirements.txt && \
+  rm requirements.txt
+ENV PATH=/usr/local/packages/python/venv/bin:$PATH
+
+WORKDIR /usr/local/packages/nodejs
+COPY packages/nodejs/ ./
+RUN npm ci
+ENV PATH=/usr/local/packages/nodejs/node_modules/.bin:$PATH
 
 COPY gopackagesdriver.sh /usr/local/bin/gopackagesdriver.sh
 
 COPY usr /usr
 RUN ln -s /usr/local/bin/podman /usr/local/bin/docker
-
-RUN python3 -m venv /usr/local/venv && \
-  /usr/local/venv/bin/pip install pynvim==0.4.3 
-
-RUN npm install -g tldr@3.3.8

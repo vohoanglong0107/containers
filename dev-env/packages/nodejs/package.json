@@ -1,0 +1,8 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "Packages in nodes.js that is required for dev environment",
+  "dependencies": {
+    "tldr": "3.3.8"
+  }
+}
