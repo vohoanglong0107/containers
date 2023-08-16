@@ -12,7 +12,6 @@ git-delta
 golang
 google-cloud-sdk-gke-gcloud-auth-plugin
 helix
-zellij
 helm
 java-11-openjdk-headless
 jq
@@ -31,4 +30,5 @@ wkhtmltopdf
 wl-clipboard
 zathura
 zathura-pdf-poppler
+zellij
 zsh
