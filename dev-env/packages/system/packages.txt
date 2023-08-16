@@ -8,6 +8,8 @@ gcc-c++
 gh
 git-delta
 google-cloud-sdk-gke-gcloud-auth-plugin
+helix
+zellij
 helm
 java-11-openjdk-headless
 jq

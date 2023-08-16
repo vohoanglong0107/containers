@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Packages in nodes.js that is required for dev environment",
   "dependencies": {
-    "tldr": "3.3.8"
+    "bash-language-server": "4.10.1",
+    "dockerfile-language-server-nodejs": "0.10.2",
+    "tldr": "3.3.8",
+    "typescript": "5.1.6",
+    "typescript-language-server": "3.3.2",
+    "yaml-language-server": "1.13.0"
   }
 }
