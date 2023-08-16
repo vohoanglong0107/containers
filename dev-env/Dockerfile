@@ -1,29 +1,5 @@
 FROM registry.fedoraproject.org/fedora-toolbox:37
 
-RUN dnf install -y \
-  bat-0.21.0 \
-  fd-find-8.2.1 \
-  flexiblas-devel-3.3.0 \
-  foot-terminfo-1.13.1 \
-  fzf-0.38.0 \
-  gcc-12.2.1 \
-  gcc-c++-12.2.1 \
-  gh-2.23.0 \
-  jq-1.6 \
-  libxcrypt-compat-4.4.33 \
-  make-4.3 \
-  neovim-0.8.3 \
-  nodejs-18.14.2 \
-  python3-3.11.2 \
-  ripgrep-13.0.0 \
-  swig-4.0.2 \
-  wl-clipboard-2.0.0 \
-  zsh-5.9 \
-  && dnf clean all
-
-RUN python3 -m venv /usr/local/venv && \
-  /usr/local/venv/bin/pip install pynvim
-
 RUN wget -q https://go.dev/dl/go1.20.linux-amd64.tar.gz \
   && tar -C /usr/local -xzf go1.20.linux-amd64.tar.gz \
   && rm go1.20.linux-amd64.tar.gz
@@ -56,3 +32,32 @@ RUN git clone --single-branch --depth 1 https://github.com/ohmyzsh/ohmyzsh.git $
   git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH}/custom/plugins/zsh-autosuggestions \ 
   && \
   git clone --single-branch --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH}/custom/plugins/zsh-syntax-highlighting
+
+COPY etc /etc
+RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo && \
+  dnf install -y \
+  bat-0.21.0 \
+  git-delta-0.13.0 \
+  fd-find-8.2.1 \
+  foot-terminfo-1.13.1 \
+  fzf-0.38.0 \
+  gcc-12.2.1 \
+  gcc-c++-12.2.1 \
+  gh-2.23.0 \
+  google-cloud-sdk-gke-gcloud-auth-plugin \
+  helm-3.11.1 \
+  jq-1.6 \
+  libxcrypt-compat-4.4.33 \
+  make-4.3 \
+  neovim-0.8.3 \
+  nodejs-18.15.0 \
+  python3-3.11.2 \
+  ripgrep-13.0.0 \
+  swig-4.0.2 \
+  terraform-1.4.2 \
+  wl-clipboard-2.0.0 \
+  zsh-5.9 \
+  && dnf clean all
+
+RUN python3 -m venv /usr/local/venv && \
+  /usr/local/venv/bin/pip install pynvim
