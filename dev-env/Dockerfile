@@ -87,3 +87,5 @@ RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hash
 
 RUN python3 -m venv /usr/local/venv && \
   /usr/local/venv/bin/pip install pynvim==0.4.3 
+
+RUN npm install -g tldr@3.3.8
