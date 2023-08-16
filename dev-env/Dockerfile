@@ -1,9 +1,9 @@
 FROM registry.fedoraproject.org/fedora-toolbox:38-15 as builder
 
 RUN dnf install -y \
-  gcc-c++-13.1.1 \
-  java-11-openjdk-headless-11.0.19.0.7 \
-  make-4.4 \
+  gcc-c++ \
+  java-11-openjdk-headless \
+  make \
   && dnf clean all
 
 RUN wget -qO /usr/local/bin/bazel \
