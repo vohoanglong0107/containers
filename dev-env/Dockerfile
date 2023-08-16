@@ -52,6 +52,13 @@ RUN wget -q https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.
   install -m 755 kubeseal /usr/local/bin/kubeseal && \
   rm kubeseal kubeseal-0.20.2-linux-amd64.tar.gz
 
+RUN wget -qO tektoncd-cli-0.30.0_Linux-64bit.rpm https://github.com/tektoncd/cli/releases/download/v0.30.0/tektoncd-cli-0.30.0_Linux-64bit.rpm && \
+  wget -qO /tmp/checksums.txt https://github.com/tektoncd/cli/releases/download/v0.30.0/checksums.txt && \
+  sha256sum --check --ignore-missing < /tmp/checksums.txt && \
+  dnf -y install tektoncd-cli-0.30.0_Linux-64bit.rpm && \
+  rm /tmp/checksums.txt tektoncd-cli-0.30.0_Linux-64bit.rpm && \
+  dnf clean all
+
 COPY etc /etc
 RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo && \
   dnf install -y \
