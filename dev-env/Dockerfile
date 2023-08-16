@@ -40,6 +40,13 @@ RUN wget -qO /tmp/argocd https://github.com/argoproj/argo-cd/releases/download/v
   install -m 555 /tmp/argocd /usr/local/bin/argocd && \
   rm /tmp/argocd
 
+# hadolint ignore=DL4006
+RUN wget -qO /tmp/kubectl https://dl.k8s.io/release/v1.24.12/bin/linux/amd64/kubectl && \
+  wget -qO /tmp/kubectl.sha256 "https://dl.k8s.io/v1.24.12/bin/linux/amd64/kubectl.sha256" && \
+  echo "$(cat /tmp/kubectl.sha256)  /tmp/kubectl" | sha256sum --check && \
+  install -o root -g root -m 0755 /tmp/kubectl /usr/local/bin/kubectl && \
+  rm /tmp/kubectl /tmp/kubectl.sha256
+
 COPY etc /etc
 RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo && \
   dnf install -y \
