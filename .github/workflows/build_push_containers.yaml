@@ -46,6 +46,12 @@ jobs:
         uses: actions/checkout@v3
       - name: Log in to ghcr.io
         run: buildah login -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }} ${{ env.IMAGE_REGISTRY }}
+      - name: Cleanup github action runner disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
       - name: Build Image
         id: build-image
         uses: redhat-actions/buildah-build@v2
