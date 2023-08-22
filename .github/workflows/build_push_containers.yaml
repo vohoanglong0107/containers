@@ -35,6 +35,8 @@ jobs:
           extra-args: |
             --cache-from ${{ env.IMAGE_REGISTRY }}/os
             --cache-to ${{ env.IMAGE_REGISTRY }}/os
+      - name: Push image
+        run: buildah push ${{ env.IMAGE_REGISTRY }}/os:38
   build-dev-env:
     runs-on: ubuntu-latest
     container:
@@ -66,3 +68,5 @@ jobs:
           extra-args: |
             --cache-from ${{ env.IMAGE_REGISTRY }}/dev-env
             --cache-to ${{ env.IMAGE_REGISTRY }}/dev-env
+      - name: Push image
+        run: buildah push ${{ env.IMAGE_REGISTRY }}/dev-env:38
