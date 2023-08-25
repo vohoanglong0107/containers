@@ -26,6 +26,7 @@ patch
 ripgrep
 rust
 terraform
+terraform-ls
 wkhtmltopdf
 wl-clipboard
 zathura
