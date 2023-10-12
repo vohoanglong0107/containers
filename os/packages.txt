@@ -15,6 +15,7 @@ imv
 intel-media-driver
 isync
 light
+lynx
 mako
 neomutt
 notmuch
