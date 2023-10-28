@@ -1,33 +1,8 @@
-FROM registry.fedoraproject.org/fedora-toolbox:39 as builder
-
-RUN dnf install -y \
-  gcc-c++ \
-  java-11-openjdk-headless \
-  make \
-  && dnf clean all
-
-RUN wget -qO /usr/local/bin/bazel \
-  https://github.com/bazelbuild/bazelisk/releases/download/v1.16.0/bazelisk-linux-amd64 && \
-  chmod +x /usr/local/bin/bazel
-
-WORKDIR /app/copybara
-
-RUN git init && \
-  git remote add origin https://github.com/google/copybara.git && \
-  git fetch --depth 1 origin 241a8132d2705c96e71773f97a8acabe9c092020 && \
-  git checkout FETCH_HEAD && \
-  /usr/local/bin/bazel build //java/com/google/copybara:copybara_deploy.jar --java_runtime_version=remotejdk_11
-
-RUN echo '#!/usr/bin/env -S java -jar' > ./copybara_wrapper && \
-  cat bazel-bin/java/com/google/copybara/copybara_deploy.jar >> ./copybara_wrapper && \
-  chmod +x ./copybara_wrapper
-
 FROM registry.fedoraproject.org/fedora-toolbox:39
 
 ENV GOPACKAGESDRIVER=/usr/local/bin/gopackagesdriver.sh
 ENV ZSH=/usr/share/oh-my-zsh
 
-COPY --from=builder /app/copybara/copybara_wrapper /usr/local/bin/copybara
 COPY gopackagesdriver.sh /usr/local/bin/gopackagesdriver.sh
 
 COPY etc /etc
