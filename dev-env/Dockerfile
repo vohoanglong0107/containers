@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-toolbox:38-15 as builder
+FROM registry.fedoraproject.org/fedora-toolbox:39 as builder
 
 RUN dnf install -y \
   gcc-c++ \
@@ -22,7 +22,7 @@ RUN echo '#!/usr/bin/env -S java -jar' > ./copybara_wrapper && \
   cat bazel-bin/java/com/google/copybara/copybara_deploy.jar >> ./copybara_wrapper && \
   chmod +x ./copybara_wrapper
 
-FROM registry.fedoraproject.org/fedora-toolbox:38-15
+FROM registry.fedoraproject.org/fedora-toolbox:39
 
 ENV GOPACKAGESDRIVER=/usr/local/bin/gopackagesdriver.sh
 ENV ZSH=/usr/share/oh-my-zsh

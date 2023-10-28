@@ -26,7 +26,7 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           image: ${{ env.IMAGE_REGISTRY }}/os
-          tags: 38
+          tags: 39
           context: ./os
           containerfiles: |
             ./os/Dockerfile
@@ -36,7 +36,7 @@ jobs:
             --cache-from ${{ env.IMAGE_REGISTRY }}/os
             --cache-to ${{ env.IMAGE_REGISTRY }}/os
       - name: Push image
-        run: buildah push ${{ env.IMAGE_REGISTRY }}/os:38
+        run: buildah push ${{ env.IMAGE_REGISTRY }}/os:39
   build-dev-env:
     runs-on: ubuntu-latest
     container:
@@ -59,7 +59,7 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           image: ${{ env.IMAGE_REGISTRY }}/dev-env
-          tags: 38
+          tags: 39
           context: ./dev-env
           containerfiles: |
             ./dev-env/Dockerfile
@@ -69,4 +69,4 @@ jobs:
             --cache-from ${{ env.IMAGE_REGISTRY }}/dev-env
             --cache-to ${{ env.IMAGE_REGISTRY }}/dev-env
       - name: Push image
-        run: buildah push ${{ env.IMAGE_REGISTRY }}/dev-env:38
+        run: buildah push ${{ env.IMAGE_REGISTRY }}/dev-env:39

@@ -26,9 +26,9 @@ buildah build \
 After the first build, we can cache the dnf metadata by
 
 ```bash
-mkdir -p $HOME/.cache/containers/fedora/38
+mkdir -p $HOME/.cache/containers/fedora/39
 podman run \
-  -v $HOME/.cache/containers/fedora/38:/var/cache/dnf:z \
+  -v $HOME/.cache/containers/fedora/39:/var/cache/dnf:z \
   -ti dev-env \
   dnf makecache
 ```
@@ -38,7 +38,7 @@ Following build will become
 ```bash
 buildah build \
   --layers=true \
-  -v $HOME/.cache/containers/fedora/38:/var/cache/dnf:O \
+  -v $HOME/.cache/containers/fedora/39:/var/cache/dnf:O \
   -t dev-env \
   -f dev-env/Dockerfile \
   dev-env

@@ -1,6 +1,6 @@
 # https://github.com/fedora-silverblue/issue-tracker/issues/359
 # https://github.com/fedora-silverblue/issue-tracker/issues/334#issuecomment-1315737913
-FROM quay.io/fedora-ostree-desktops/silverblue:38
+FROM quay.io/fedora-ostree-desktops/silverblue:39
 
 # On system with ostree, dracut is patched so no need to rewrite initramfs with dracut -f or plymouth-set-default-theme -R 
 COPY usr/share/plymouth /usr/share/plymouth
