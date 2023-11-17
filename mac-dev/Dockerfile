@@ -1,6 +1,6 @@
 FROM fedora:39
 
-RUN dnf install -y neovim openssh-server sudo tmux curl zsh fzf ripgrep fd-find git gcc gcc-c++ make
+RUN dnf install -y neovim openssh-server sudo tmux curl zsh fzf ripgrep fd-find git gcc gcc-c++ make nodejs
 RUN command -v zsh | tee -a /etc/shells && \
   cat /etc/shells && useradd -u 1001 dev && \
   chsh -s "$(command -v zsh)" dev && \
