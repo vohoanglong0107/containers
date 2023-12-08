@@ -25,6 +25,7 @@ pandoc-pdf
 patch
 ripgrep
 rust
+sqlite
 terraform
 terraform-ls
 wkhtmltopdf
