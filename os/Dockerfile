@@ -11,6 +11,7 @@ COPY usr/share/grub /usr/share/grub
 
 COPY packages.txt packages.sh ./
 RUN ./packages.sh && \
+  rm packages.txt packages.sh && \
   ostree container commit
 
 RUN wget -q \
@@ -34,4 +35,9 @@ COPY usr /usr
 
 RUN wget -q https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/FiraMono.zip \
   && unzip FiraMono.zip -d /usr/share/fonts/fira-mono-nerd-fonts/ \
+  && fc-cache -f && ostree container commit
+
+RUN wget -qO wezterm https://github.com/wez/wezterm/releases/download/20230712-072601-f4abf8fd/WezTerm-20230712-072601-f4abf8fd-Ubuntu20.04.AppImage \
+  && chmod +x wezterm \
+  && mv wezterm /usr/bin \
   && fc-cache -f && ostree container commit
