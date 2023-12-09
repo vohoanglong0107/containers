@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 
-VERSION=v1.24.12
+VERSION=v1.28.4
 
 wget -q https://dl.k8s.io/release/$VERSION/bin/linux/amd64/kubectl
 wget -q https://dl.k8s.io/$VERSION/bin/linux/amd64/kubectl.sha256
