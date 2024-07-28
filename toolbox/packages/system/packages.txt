@@ -4,7 +4,6 @@ difftastic
 dotnet-sdk-6.0
 fd-find
 foot-terminfo
-fzf
 gcc
 gcc-c++
 gh
