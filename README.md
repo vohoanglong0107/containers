@@ -9,8 +9,8 @@ All command is performed in the root directory
 buildah build \
   --layers=true \
   -t os \
-  -f platforms/os/Dockerfile \
-  platforms/os/
+  -f os/Dockerfile \
+  os/
 ```
 
 ## Development environment
