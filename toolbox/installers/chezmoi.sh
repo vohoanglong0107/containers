@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 
-VERSION=2.34.3
+VERSION=2.51.0
 URL=https://github.com/twpayne/chezmoi/releases/download/v${VERSION}
 
 wget -q ${URL}/chezmoi_${VERSION}_linux_amd64.tar.gz \
