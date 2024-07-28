@@ -4,6 +4,7 @@ btop
 fcitx5
 fcitx5-anthy
 fcitx5-unikey
+ffmpeg-free
 fuzzel
 fzf
 gh
@@ -15,6 +16,7 @@ imv
 intel-media-driver
 isync
 light
+libavcodec-freeworld
 lynx
 mako
 neomutt
