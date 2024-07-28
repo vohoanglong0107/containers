@@ -11,3 +11,5 @@ sha256sum --check WezTerm-$VERSION-$FORMAT.sha256
 
 chmod +x WezTerm-$VERSION-$FORMAT
 mv WezTerm-$VERSION-$FORMAT /usr/bin/wezterm
+
+rm WezTerm-$VERSION-$FORMAT.sha256
