@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-toolbox:39
+FROM registry.fedoraproject.org/fedora-toolbox:40
 
 ENV GOPACKAGESDRIVER=/usr/local/bin/gopackagesdriver.sh
 ENV ZSH=/usr/share/oh-my-zsh
