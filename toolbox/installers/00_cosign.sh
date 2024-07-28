@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 
-VERSION=2.1.1
+VERSION=2.3.0
 URL=https://github.com/sigstore/cosign/releases/download/v$VERSION
 
 wget -q $URL/cosign-linux-amd64
