@@ -37,7 +37,7 @@ RUN wget -q https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/Fir
   && unzip FiraMono.zip -d /usr/share/fonts/fira-mono-nerd-fonts/ \
   && fc-cache -f && ostree container commit
 
-RUN wget -qO wezterm https://github.com/wez/wezterm/releases/download/20230712-072601-f4abf8fd/WezTerm-20230712-072601-f4abf8fd-Ubuntu20.04.AppImage \
+RUN wget -qO wezterm https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-20240203-110809-5046fc22-Ubuntu20.04.AppImage \
   && chmod +x wezterm \
   && mv wezterm /usr/bin \
   && fc-cache -f && ostree container commit
